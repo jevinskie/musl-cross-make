@@ -1,0 +1,13 @@
+--- binutils-2.44/zlib/zutil.h	2025-02-01 19:00:00.000000000 -0500
++++ binutils-2.44-macos-zlib/zlib/zutil.h	2025-08-03 20:34:58.241481012 -0400
+@@ -136,9 +136,9 @@
+ #    include <malloc.h>
+ #  endif
+ #endif
+
+-#if defined(MACOS) || defined(TARGET_OS_MAC)
++#if !defined(__APPLE__) && (defined(MACOS) || defined(TARGET_OS_MAC))
+ #  define OS_CODE  7
+ #  ifndef Z_SOLO
+ #    if defined(__MWERKS__) && __dest_os != __be_os && __dest_os != __win32_os
+ #      include <unix.h> /* for fdopen */

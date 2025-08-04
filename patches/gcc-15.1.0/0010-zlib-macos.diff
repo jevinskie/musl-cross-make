@@ -1,0 +1,13 @@
+--- gcc-15.1.0/zlib/zutil.h	2025-04-25 04:18:05.000000000 -0400
++++ gcc-15.1.0-macos-zlib/zlib/zutil.h	2025-08-03 20:30:55.775946812 -0400
+@@ -129,9 +129,9 @@
+ #    include <malloc.h>
+ #  endif
+ #endif
+
+-#if defined(MACOS) || defined(TARGET_OS_MAC)
++#if !defined(__APPLE__) && (defined(MACOS) || defined(TARGET_OS_MAC))
+ #  define OS_CODE  7
+ #  ifndef Z_SOLO
+ #    if defined(__MWERKS__) && __dest_os != __be_os && __dest_os != __win32_os
+ #      include <unix.h> /* for fdopen */
